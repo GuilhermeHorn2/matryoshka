@@ -18,9 +18,10 @@ int teste(int l[],int n){
     }
     return ord;
 
+
 }
 
-int crescente(int l[],int n){
+void crescente(int l[],int n){
     int ord = 0;
     while(ord == 0){
         int k = l[0];
@@ -38,7 +39,6 @@ int crescente(int l[],int n){
             }
         }
     }
-    return l;
 
 }
 
@@ -55,28 +55,36 @@ int main(){
     }
     else{
         int p = 0;
-        k = crescente(l,n);
+        int *k = new int[n];
+        for(int i =0;i< n;i++){
+            k[i] = l[i];
+        }
+        crescente(l,n);
         for(int i = 0;i < n;i++){
             if(k[i] != l[i]){
                 p++;
             }
         }
         int *r = new int[p];
+        int m = 0;
         for(int i = 0;i < n;i++){
             if(k[i] != l[i]){
-                r[i] = k[i];
+                r[m] = k[i];
+                m++;
             }
         }
         printf("%d \n",p);
+        crescente(r,p);
         for(int i = 0;i < p;i++){
-            printf("%d",r[i]);
+            printf("%d ",r[i]);
         }
+        delete[] r;
+        r = NULL;
+        delete[] k;
+        k = NULL;
     }
     delete[] l;
-    delete[] r;
     l = NULL;
-    r = NULL;
-
 
 
 return 0;
